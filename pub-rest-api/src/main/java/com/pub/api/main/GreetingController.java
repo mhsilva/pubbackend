@@ -12,7 +12,7 @@ public class GreetingController {
 	public static final String MESSAGE = "Hello, {0}";
 	private final AtomicLong atomicLong = new AtomicLong();
 
-	@RequestMapping("/greeting")
+	@RequestMapping("/")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return new Greeting(atomicLong.incrementAndGet(), MessageFormat.format(GreetingController.MESSAGE, name));
 	}
