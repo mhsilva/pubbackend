@@ -1,10 +1,10 @@
- package com.pub.api.main;
+ package com.pub.api.entity;
 
-public class Greeting {
+public class Status {
 	private final long id;
 	private final String content;
 
-	public Greeting(long id, String content) {
+	public Status(long id, String content) {
 		this.id = id;
 		this.content = content;
 	}
