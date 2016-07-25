@@ -7,4 +7,6 @@ import com.pub.api.mongo.entity.PubEstablishment;
 public interface PubEstablishmentService {
 
 	public List<PubEstablishment> getAll();
+
+	public PubEstablishment getByName(String name);
 }

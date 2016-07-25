@@ -19,4 +19,8 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 		return establishmentRepository.findAll();
 	}
 
+	public PubEstablishment getByName(String name) {
+		return establishmentRepository.findByName(name);
+	}
+
 }
