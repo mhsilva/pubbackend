@@ -1,6 +1,6 @@
-package com.pub.api.entity;
+package com.pub.api.request;
 
-public class CallWaiter {
+public class PubCallWaiter {
 
 	private String locationID;
 	private String tableNumber;
