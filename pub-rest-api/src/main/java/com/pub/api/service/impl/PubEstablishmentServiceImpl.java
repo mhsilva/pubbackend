@@ -15,12 +15,18 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	@Autowired
 	private PubEstablishmentRepository establishmentRepository;
 
+	@Override
 	public List<PubEstablishment> getAll() {
 		return establishmentRepository.findAll();
 	}
 
+	@Override
 	public PubEstablishment getByName(String name) {
 		return establishmentRepository.findByName(name);
 	}
 
+	@Override
+	public PubEstablishment save(PubEstablishment establishment) {
+		return establishmentRepository.save(establishment);
+	}
 }

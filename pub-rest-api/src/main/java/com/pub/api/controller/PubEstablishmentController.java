@@ -3,6 +3,7 @@ package com.pub.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +28,11 @@ public class PubEstablishmentController {
 	@RequestMapping(method = RequestMethod.GET, params = { "name" })
 	public @ResponseBody PubEstablishment getEstablishmentsByName(@RequestParam(name = "name") String name) {
 		return pubEstablishmentService.getByName(name);
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody PubEstablishment saveEstablishment(@RequestBody PubEstablishment establishment) {
+		return pubEstablishmentService.save(establishment);
 	}
 
 }

@@ -9,4 +9,6 @@ public interface PubEstablishmentService {
 	public List<PubEstablishment> getAll();
 
 	public PubEstablishment getByName(String name);
+
+	public PubEstablishment save(PubEstablishment establishment);
 }
