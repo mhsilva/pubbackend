@@ -1,17 +1,31 @@
 package com.pub.api.mongo.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "waiters")
 public class PubWaiter {
 
-	private String nome;
+	@Id
+	private String id;
+	private String name;
 	private String login;
 	private String token;
 
-	public String getNome() {
-		return nome;
+	public String getId() {
+		return id;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getLogin() {
@@ -22,4 +36,11 @@ public class PubWaiter {
 		this.login = login;
 	}
 
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 }

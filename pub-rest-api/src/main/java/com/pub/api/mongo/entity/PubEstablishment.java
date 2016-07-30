@@ -3,6 +3,7 @@ package com.pub.api.mongo.entity;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "establishments")
@@ -14,6 +15,7 @@ public class PubEstablishment {
 	private String name;
 	private String locationId;
 
+	@DBRef
 	private List<PubWaiter> waiters;
 
 	public String getId() {
