@@ -1,10 +1,12 @@
- package com.pub.api.response;
+package com.pub.api.response;
+
+import java.util.List;
 
 public class PubStatus {
 	private final long id;
-	private final String content;
+	private final List<String> content;
 
-	public PubStatus(long id, String content) {
+	public PubStatus(long id, List<String> content) {
 		this.id = id;
 		this.content = content;
 	}
@@ -13,7 +15,7 @@ public class PubStatus {
 		return id;
 	}
 
-	public String getContent() {
+	public List<String> getContent() {
 		return content;
 	}
 

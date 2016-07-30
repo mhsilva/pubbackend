@@ -11,4 +11,6 @@ public interface PubWaiterService {
 	public List<PubWaiter> getAll();
 
 	public PubWaiter getByLogin(String login);
+
+	public PubWaiter getById(String id);
 }

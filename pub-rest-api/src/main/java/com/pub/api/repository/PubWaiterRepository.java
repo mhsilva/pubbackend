@@ -9,4 +9,6 @@ public interface PubWaiterRepository extends MongoRepository<PubWaiter, String> 
 	public PubWaiter findByName(String name);
 
 	public PubWaiter findByLogin(String login);
+
+	public PubWaiter findById(String id);
 }

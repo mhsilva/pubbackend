@@ -2,15 +2,15 @@ package com.pub.api.request;
 
 public class PubCallWaiter {
 
-	private String locationID;
+	private String locationId;
 	private String tableNumber;
 
-	public String getLocationID() {
-		return locationID;
+	public String getLocationId() {
+		return locationId;
 	}
 
-	public void setLocationID(String locationID) {
-		this.locationID = locationID;
+	public void setLocationId(String locationId) {
+		this.locationId = locationId;
 	}
 
 	public String getTableNumber() {

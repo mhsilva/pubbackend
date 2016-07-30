@@ -10,5 +10,9 @@ public interface PubEstablishmentService {
 
 	public PubEstablishment getByName(String name);
 
+	public PubEstablishment getById(String id);
+
+	public PubEstablishment getByLocationId(String locationId);
+
 	public PubEstablishment save(PubEstablishment establishment);
 }

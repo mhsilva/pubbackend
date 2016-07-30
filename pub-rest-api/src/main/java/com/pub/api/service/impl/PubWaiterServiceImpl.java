@@ -27,6 +27,11 @@ public class PubWaiterServiceImpl implements PubWaiterService {
 	}
 
 	@Override
+	public PubWaiter getById(String id) {
+		return waiterRepository.findById(id);
+	}
+
+	@Override
 	public PubWaiter save(PubWaiter waiter) {
 		PubWaiter persistedEntity = getByLogin(waiter.getLogin());
 		if (persistedEntity != null) {

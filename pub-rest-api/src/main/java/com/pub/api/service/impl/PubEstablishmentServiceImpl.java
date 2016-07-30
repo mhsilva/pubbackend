@@ -32,6 +32,16 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	}
 
 	@Override
+	public PubEstablishment getById(String id) {
+		return establishmentRepository.findById(id);
+	}
+
+	@Override
+	public PubEstablishment getByLocationId(String locationId) {
+		return establishmentRepository.findByLocationId(locationId);
+	}
+
+	@Override
 	public PubEstablishment save(PubEstablishment establishment) {
 		List<PubWaiter> waiters = new ArrayList<>();
 		for (PubWaiter waiter : establishment.getWaiters()) {
