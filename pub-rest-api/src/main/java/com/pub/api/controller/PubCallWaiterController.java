@@ -28,7 +28,7 @@ public class PubCallWaiterController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody PubStatus callWaiter(@RequestBody PubCallWaiter callWaiter) {
-		List<PubWaiter> waiters = pubCallWaiterService.callWaiter(callWaiter.getLocationId());
+		List<PubWaiter> waiters = pubCallWaiterService.callWaiter(callWaiter);
 		List<String> content = new ArrayList<>();
 		for (PubWaiter pubWaiter : waiters) {
 			content.add(PubMessageUtil.formatMessage(WAITER_CALLED_TO_TABLE, pubWaiter.getName(),
