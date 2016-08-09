@@ -11,6 +11,7 @@ public class PubWaiter {
 	private String name;
 	private String login;
 	private String token;
+	private boolean registered;
 
 	public String getId() {
 		return id;
@@ -42,5 +43,13 @@ public class PubWaiter {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public boolean isRegistered() {
+		return registered;
+	}
+
+	public void setRegistered(boolean registered) {
+		this.registered = registered;
 	}
 }
