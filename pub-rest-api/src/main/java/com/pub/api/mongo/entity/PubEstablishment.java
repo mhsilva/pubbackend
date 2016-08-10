@@ -1,8 +1,7 @@
 package com.pub.api.mongo.entity;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -22,7 +21,7 @@ public class PubEstablishment {
 	@DBRef
 	private List<PubWaiter> waiters;
 
-	private Set<PubTableQueue> tableQueue;
+	private List<PubTableQueue> tableQueue;
 
 	public String getId() {
 		return id;
@@ -56,18 +55,19 @@ public class PubEstablishment {
 		this.waiters = waiters;
 	}
 
-	public Set<PubTableQueue> getTableQueue() {
+	public List<PubTableQueue> getTableQueue() {
 		return tableQueue;
 	}
 
-	public void setTableQueue(Set<PubTableQueue> tableQueue) {
+	public void setTableQueue(List<PubTableQueue> tableQueue) {
 		this.tableQueue = tableQueue;
 	}
 
 	public void addCall(PubTableQueue pubTableQueue) {
 		if (PubObjectUtil.isEmpty(this.tableQueue)) {
-			this.tableQueue = new HashSet<>();
+			this.tableQueue = new ArrayList<>();
 		}
 		this.tableQueue.add(pubTableQueue);
+		this.tableQueue = PubObjectUtil.getUniqueElemetsFromList(this.tableQueue);
 	}
 }

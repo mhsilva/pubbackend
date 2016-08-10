@@ -1,7 +1,10 @@
 package com.pub.api.utils;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -34,5 +37,9 @@ public class PubObjectUtil {
 			return objDefault;
 		}
 		return obj;
+	}
+
+	public static <T> List<T> getUniqueElemetsFromList(List<T> list) {
+		return new ArrayList<>(new HashSet<>(list));
 	}
 }
