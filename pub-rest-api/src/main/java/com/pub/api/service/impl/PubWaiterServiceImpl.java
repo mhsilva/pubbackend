@@ -37,7 +37,7 @@ public class PubWaiterServiceImpl implements PubWaiterService {
 		if (persistedEntity != null) {
 			persistedEntity.setName(PubObjectUtil.ifNull(waiter.getName(), persistedEntity.getName()));
 			persistedEntity.setToken(PubObjectUtil.ifNull(waiter.getToken(), persistedEntity.getToken()));
-			persistedEntity.setRegistered(true);
+			persistedEntity.setRegistered(!PubObjectUtil.isEmpty(waiter.getToken()));
 		} else {
 			persistedEntity = waiter;
 		}

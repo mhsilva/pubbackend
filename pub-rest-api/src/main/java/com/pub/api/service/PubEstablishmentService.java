@@ -15,4 +15,6 @@ public interface PubEstablishmentService {
 	public PubEstablishment getByLocationId(String locationId);
 
 	public PubEstablishment save(PubEstablishment establishment);
+
+	public void addCall(String call, PubEstablishment establishment);
 }

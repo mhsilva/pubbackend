@@ -1,12 +1,14 @@
 package com.pub.api.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pub.api.mongo.entity.PubEstablishment;
+import com.pub.api.mongo.entity.PubTableQueue;
 import com.pub.api.mongo.entity.PubWaiter;
 import com.pub.api.repository.PubEstablishmentRepository;
 import com.pub.api.service.PubEstablishmentService;
@@ -50,5 +52,14 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 		}
 		establishment.setWaiters(waiters);
 		return establishmentRepository.save(establishment);
+	}
+
+	@Override
+	public void addCall(String call, PubEstablishment pubEstablishment) {
+		PubTableQueue pubTableQueue = new PubTableQueue();
+		pubTableQueue.setCall(call);
+		pubTableQueue.setCallDate(Calendar.getInstance().getTime());
+		pubEstablishment.addCall(pubTableQueue);
+		this.save(pubEstablishment);
 	}
 }

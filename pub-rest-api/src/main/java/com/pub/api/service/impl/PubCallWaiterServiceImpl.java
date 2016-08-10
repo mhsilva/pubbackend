@@ -14,14 +14,13 @@ import com.pub.api.request.PubCallWaiter;
 import com.pub.api.response.PubStatus;
 import com.pub.api.service.PubCallWaiterService;
 import com.pub.api.service.PubEstablishmentService;
-import com.pub.api.service.PubWaiterService;
 import com.pub.api.utils.PubMessageUtil;
 import com.pub.api.utils.PubObjectUtil;
 
 @Service
 public class PubCallWaiterServiceImpl implements PubCallWaiterService {
 
-	public static final String TABLE_CALLED = "Table {0} called.";
+	public static final String TABLE_CALLED = "Table {0} calling.";
 
 	public static final String WAITER_CALLED_TO_TABLE = "Waiter {0} called for table {1}.";
 
@@ -29,9 +28,6 @@ public class PubCallWaiterServiceImpl implements PubCallWaiterService {
 
 	@Autowired
 	private PubEstablishmentService establishmentService;
-
-	@Autowired
-	private PubWaiterService waiterService;
 
 	@Autowired
 	private PubGcmRestService gcmRestService;
@@ -43,15 +39,16 @@ public class PubCallWaiterServiceImpl implements PubCallWaiterService {
 		if (!PubObjectUtil.isEmpty(establishment)) {
 			waiters = establishment.getWaiters();
 		}
+		String call = PubMessageUtil.formatMessage(TABLE_CALLED, callWaiter.getTableNumber());
 		List<String> content = new ArrayList<>();
 		for (PubWaiter pubWaiter : waiters) {
 			if (PubObjectUtil.ifNull(pubWaiter.isRegistered(), false)) {
 				content.add(PubMessageUtil.formatMessage(WAITER_CALLED_TO_TABLE, pubWaiter.getName(),
 						callWaiter.getTableNumber()));
-				gcmRestService.sendGcmNotification(pubWaiter.getToken(),
-						PubMessageUtil.formatMessage(TABLE_CALLED, callWaiter.getTableNumber()));
+				gcmRestService.sendGcmNotification(pubWaiter.getToken(), call);
 			}
 		}
+		establishmentService.addCall(call, establishment);
 		return new PubStatus(idCounter.incrementAndGet(), content);
 	}
 }

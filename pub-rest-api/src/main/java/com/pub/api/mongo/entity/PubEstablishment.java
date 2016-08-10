@@ -1,10 +1,14 @@
 package com.pub.api.mongo.entity;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.pub.api.utils.PubObjectUtil;
 
 @Document(collection = "establishments")
 public class PubEstablishment {
@@ -17,6 +21,8 @@ public class PubEstablishment {
 
 	@DBRef
 	private List<PubWaiter> waiters;
+
+	private Set<PubTableQueue> tableQueue;
 
 	public String getId() {
 		return id;
@@ -48,5 +54,20 @@ public class PubEstablishment {
 
 	public void setWaiters(List<PubWaiter> waiters) {
 		this.waiters = waiters;
+	}
+
+	public Set<PubTableQueue> getTableQueue() {
+		return tableQueue;
+	}
+
+	public void setTableQueue(Set<PubTableQueue> tableQueue) {
+		this.tableQueue = tableQueue;
+	}
+
+	public void addCall(PubTableQueue pubTableQueue) {
+		if (PubObjectUtil.isEmpty(this.tableQueue)) {
+			this.tableQueue = new HashSet<>();
+		}
+		this.tableQueue.add(pubTableQueue);
 	}
 }
