@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pub.api.mongo.entity.PubEstablishment;
+import com.pub.api.response.PubEstablishmentStatus;
 import com.pub.api.service.PubEstablishmentService;
 
 @RestController
@@ -31,15 +33,22 @@ public class PubEstablishmentController {
 	public @ResponseBody PubEstablishment getEstablishmentsByName(@RequestParam(name = "name") String name) {
 		return pubEstablishmentService.getByName(name);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, params = { "locationId" })
-	public @ResponseBody PubEstablishment getEstablishmentsByLocationId(@RequestParam(name = "locationId") String locationId) {
+	public @ResponseBody PubEstablishment getEstablishmentsByLocationId(
+			@RequestParam(name = "locationId") String locationId) {
 		return pubEstablishmentService.getByLocationId(locationId);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, params = { "registered" })
-	public @ResponseBody Boolean getRegisteredEstablishmentsByLocationId(@RequestParam(name = "registered") String locationId) {
+	public @ResponseBody Boolean getRegisteredEstablishmentsByLocationId(
+			@RequestParam(name = "registered") String locationId) {
 		return pubEstablishmentService.getRegisteredEstablishmentsByLocationId(locationId);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, params = { "locationIdList" })
+	public @ResponseBody List<PubEstablishmentStatus> getEstablishmentStatus(@PathVariable String[] locationIdList) {
+		return pubEstablishmentService.getEstablishmentStatus(locationIdList);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

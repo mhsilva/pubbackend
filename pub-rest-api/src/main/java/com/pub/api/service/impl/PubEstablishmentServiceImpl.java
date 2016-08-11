@@ -1,6 +1,7 @@
 package com.pub.api.service.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import com.pub.api.mongo.entity.PubEstablishment;
 import com.pub.api.mongo.entity.PubTableQueue;
 import com.pub.api.mongo.entity.PubWaiter;
 import com.pub.api.repository.PubEstablishmentRepository;
+import com.pub.api.response.PubEstablishmentStatus;
 import com.pub.api.service.PubEstablishmentService;
 import com.pub.api.service.PubWaiterService;
 import com.pub.api.utils.PubObjectUtil;
@@ -48,6 +50,20 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	public Boolean getRegisteredEstablishmentsByLocationId(String locationId) {
 		PubEstablishment pubEstablishment = establishmentRepository.findByLocationId(locationId);
 		return !PubObjectUtil.isEmpty(pubEstablishment);
+	}
+
+	@Override
+	public List<PubEstablishmentStatus> getEstablishmentStatus(String[] locationIdList) {
+		List<String> locationIdCollection = Arrays.asList(locationIdList);
+		List<PubEstablishmentStatus> pubEstablishmentStatusCollection = new ArrayList<>();
+		for (String locationId : locationIdCollection) {
+			PubEstablishment pubEstablishment = this.getById(locationId);
+			PubEstablishmentStatus pubEstablishmentStatus = new PubEstablishmentStatus();
+			pubEstablishmentStatus.setLocationId(locationId);
+			pubEstablishmentStatus.setRegistered(!PubObjectUtil.isEmpty(pubEstablishment));
+			pubEstablishmentStatusCollection.add(pubEstablishmentStatus);
+		}
+		return pubEstablishmentStatusCollection;
 	}
 
 	@Override
