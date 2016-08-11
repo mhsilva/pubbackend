@@ -55,7 +55,7 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	public List<PubEstablishmentStatus> getEstablishmentStatus(String[] locationIdList) {
 		List<PubEstablishmentStatus> pubEstablishmentStatusCollection = new ArrayList<>();
 		for (String locationId : locationIdList) {
-			PubEstablishment pubEstablishment = this.getById(locationId);
+			PubEstablishment pubEstablishment = this.getByLocationId(locationId);
 			PubEstablishmentStatus pubEstablishmentStatus = new PubEstablishmentStatus();
 			pubEstablishmentStatus.setLocationId(locationId);
 			pubEstablishmentStatus.setRegistered(!PubObjectUtil.isEmpty(pubEstablishment));
