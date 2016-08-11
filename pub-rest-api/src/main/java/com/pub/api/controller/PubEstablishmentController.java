@@ -31,6 +31,11 @@ public class PubEstablishmentController {
 	public @ResponseBody PubEstablishment getEstablishmentsByName(@RequestParam(name = "name") String name) {
 		return pubEstablishmentService.getByName(name);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, params = { "locationId" })
+	public @ResponseBody PubEstablishment getEstablishmentsByLocationId(@RequestParam(name = "locationId") String locationId) {
+		return pubEstablishmentService.getByLocationId(locationId);
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody PubEstablishment saveEstablishment(@RequestBody PubEstablishment establishment) {
