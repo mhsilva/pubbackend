@@ -13,6 +13,8 @@ public interface PubEstablishmentService {
 	public PubEstablishment getById(String id);
 
 	public PubEstablishment getByLocationId(String locationId);
+	
+	public Boolean getRegisteredEstablishmentsByLocationId(String locationId);
 
 	public PubEstablishment save(PubEstablishment establishment);
 

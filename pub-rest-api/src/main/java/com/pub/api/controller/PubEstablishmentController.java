@@ -36,10 +36,14 @@ public class PubEstablishmentController {
 	public @ResponseBody PubEstablishment getEstablishmentsByLocationId(@RequestParam(name = "locationId") String locationId) {
 		return pubEstablishmentService.getByLocationId(locationId);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, params = { "registered" })
+	public @ResponseBody Boolean getRegisteredEstablishmentsByLocationId(@RequestParam(name = "locationId") String locationId) {
+		return pubEstablishmentService.getRegisteredEstablishmentsByLocationId(locationId);
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody PubEstablishment saveEstablishment(@RequestBody PubEstablishment establishment) {
 		return pubEstablishmentService.save(establishment);
 	}
-
 }

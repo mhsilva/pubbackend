@@ -42,6 +42,11 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	public PubEstablishment getByLocationId(String locationId) {
 		return establishmentRepository.findByLocationId(locationId);
 	}
+	
+	@Override
+	public Boolean getRegisteredEstablishmentsByLocationId(String locationId) {
+		return establishmentRepository.exists(locationId);
+	}
 
 	@Override
 	public PubEstablishment save(PubEstablishment establishment) {
@@ -61,5 +66,5 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 		pubTableQueue.setCallDate(Calendar.getInstance().getTime());
 		pubEstablishment.addCall(pubTableQueue);
 		this.save(pubEstablishment);
-	}
+	}	
 }
