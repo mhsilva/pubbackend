@@ -13,6 +13,7 @@ import com.pub.api.mongo.entity.PubWaiter;
 import com.pub.api.repository.PubEstablishmentRepository;
 import com.pub.api.service.PubEstablishmentService;
 import com.pub.api.service.PubWaiterService;
+import com.pub.api.utils.PubObjectUtil;
 
 @Service
 public class PubEstablishmentServiceImpl implements PubEstablishmentService {
@@ -42,11 +43,11 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	public PubEstablishment getByLocationId(String locationId) {
 		return establishmentRepository.findByLocationId(locationId);
 	}
-	
+
 	@Override
-	public Boolean getRegisteredEstablishmentsByLocationId(String locationId) {		
-		PubEstablishment pubEstablishment = establishmentRepository.findByLocationId(locationId);		
-		return establishmentRepository.exists(pubEstablishment.getId());		
+	public Boolean getRegisteredEstablishmentsByLocationId(String locationId) {
+		PubEstablishment pubEstablishment = establishmentRepository.findByLocationId(locationId);
+		return PubObjectUtil.isEmpty(pubEstablishment);
 	}
 
 	@Override
@@ -67,5 +68,5 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 		pubTableQueue.setCallDate(Calendar.getInstance().getTime());
 		pubEstablishment.addCall(pubTableQueue);
 		this.save(pubEstablishment);
-	}	
+	}
 }
