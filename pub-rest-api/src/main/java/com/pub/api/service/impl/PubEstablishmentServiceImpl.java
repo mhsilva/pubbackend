@@ -44,8 +44,9 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	}
 	
 	@Override
-	public Boolean getRegisteredEstablishmentsByLocationId(String locationId) {
-		return establishmentRepository.exists(locationId);
+	public Boolean getRegisteredEstablishmentsByLocationId(String locationId) {		
+		PubEstablishment pubEstablishment = establishmentRepository.findByLocationId(locationId);		
+		return establishmentRepository.exists(pubEstablishment.getId());		
 	}
 
 	@Override
