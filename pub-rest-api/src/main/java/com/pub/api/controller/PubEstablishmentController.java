@@ -46,7 +46,7 @@ public class PubEstablishmentController {
 		return pubEstablishmentService.getRegisteredEstablishmentsByLocationId(locationId);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, params = { "locationIdList" })
+	@RequestMapping(value = "{locationIdList}", method = RequestMethod.GET)
 	public @ResponseBody List<PubEstablishmentStatus> getEstablishmentStatus(@PathVariable String[] locationIdList) {
 		return pubEstablishmentService.getEstablishmentStatus(locationIdList);
 	}
