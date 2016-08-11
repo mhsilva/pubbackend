@@ -38,7 +38,7 @@ public class PubEstablishmentController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, params = { "registered" })
-	public @ResponseBody Boolean getRegisteredEstablishmentsByLocationId(@RequestParam(name = "locationId") String locationId) {
+	public @ResponseBody Boolean getRegisteredEstablishmentsByLocationId(@RequestParam(name = "registered") String locationId) {
 		return pubEstablishmentService.getRegisteredEstablishmentsByLocationId(locationId);
 	}
 
