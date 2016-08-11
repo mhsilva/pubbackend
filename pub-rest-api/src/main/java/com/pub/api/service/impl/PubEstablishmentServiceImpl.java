@@ -1,7 +1,6 @@
 package com.pub.api.service.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -54,9 +53,8 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 
 	@Override
 	public List<PubEstablishmentStatus> getEstablishmentStatus(String[] locationIdList) {
-		List<String> locationIdCollection = Arrays.asList(locationIdList);
 		List<PubEstablishmentStatus> pubEstablishmentStatusCollection = new ArrayList<>();
-		for (String locationId : locationIdCollection) {
+		for (String locationId : locationIdList) {
 			PubEstablishment pubEstablishment = this.getById(locationId);
 			PubEstablishmentStatus pubEstablishmentStatus = new PubEstablishmentStatus();
 			pubEstablishmentStatus.setLocationId(locationId);
