@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,8 +45,8 @@ public class PubEstablishmentController {
 		return pubEstablishmentService.getRegisteredEstablishmentsByLocationId(locationId);
 	}
 
-	@RequestMapping(value = "{locationIdList}", method = RequestMethod.GET)
-	public @ResponseBody List<PubEstablishmentStatus> getEstablishmentStatus(@PathVariable String[] locationIdList) {
+	@RequestMapping(method = RequestMethod.GET, params = { "locationIdList" })
+	public @ResponseBody List<PubEstablishmentStatus> getEstablishmentStatus(@RequestParam String[] locationIdList) {
 		return pubEstablishmentService.getEstablishmentStatus(locationIdList);
 	}
 
