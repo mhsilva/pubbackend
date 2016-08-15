@@ -28,6 +28,7 @@ public class PubEstablishmentController {
 		return pubEstablishmentService.getAll();
 	}
 
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, params = { "name" })
 	public @ResponseBody PubEstablishment getEstablishmentsByName(@RequestParam(name = "name") String name) {
 		return pubEstablishmentService.getByName(name);
