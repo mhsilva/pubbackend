@@ -30,7 +30,7 @@ public class PubEstablishmentController {
 
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET, params = { "name" })
-	public @ResponseBody PubEstablishment getEstablishmentsByName(@RequestParam(name = "name") String name) {
+	public @ResponseBody List<PubEstablishment> getEstablishmentsByName(@RequestParam(name = "name") String name) {
 		return pubEstablishmentService.getByName(name);
 	}
 

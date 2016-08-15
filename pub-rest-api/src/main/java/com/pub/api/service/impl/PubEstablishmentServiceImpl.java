@@ -31,7 +31,7 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	}
 
 	@Override
-	public PubEstablishment getByName(String name) {
+	public List<PubEstablishment> getByName(String name) {
 		return establishmentRepository.findByName(name);
 	}
 
