@@ -42,4 +42,8 @@ public class PubObjectUtil {
 	public static <T> List<T> getUniqueElemetsFromList(List<T> list) {
 		return new ArrayList<>(new HashSet<>(list));
 	}
+
+	public static <T> List<T> listIfNull(List<T> list) {
+		return isEmpty(list) ? new ArrayList<>() : list;
+	}
 }

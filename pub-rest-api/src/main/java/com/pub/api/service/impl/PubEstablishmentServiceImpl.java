@@ -67,7 +67,7 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 	@Override
 	public PubEstablishment save(PubEstablishment establishment) {
 		List<PubWaiter> waiters = new ArrayList<>();
-		for (PubWaiter waiter : establishment.getWaiters()) {
+		for (PubWaiter waiter : PubObjectUtil.listIfNull(establishment.getWaiters())) {
 			PubWaiter pubWaiter = waiterService.save(waiter);
 			waiters.add(pubWaiter);
 		}
