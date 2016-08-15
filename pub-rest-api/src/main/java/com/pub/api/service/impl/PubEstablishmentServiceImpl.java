@@ -32,7 +32,7 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 
 	@Override
 	public List<PubEstablishment> getByName(String name) {
-		return establishmentRepository.findByName(name);
+		return establishmentRepository.findByNameLike(name);
 	}
 
 	@Override
