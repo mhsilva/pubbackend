@@ -38,7 +38,13 @@ angular.module('myApp.register', ['ngRoute'])
         }
         $scope.saveForm = function () {
             $scope.establishment.waiters = $scope.waiters;
-            $http.post($scope.url, $scope.establishment);
+            $http.post($scope.url, $scope.establishment)
+                .success(function () {
+                    console.log("Success");
+                })
+                .error(function () {
+                    console.log("Error");
+                });
         };
         $scope.hasSelected = function () {
             return $scope.selected;
