@@ -51,6 +51,7 @@ public class PubEstablishmentController {
 		return pubEstablishmentService.getEstablishmentStatus(locationIdList);
 	}
 
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody PubEstablishment saveEstablishment(@RequestBody PubEstablishment establishment) {
 		return pubEstablishmentService.save(establishment);
