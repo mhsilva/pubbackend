@@ -64,7 +64,7 @@ public class PubEstablishmentController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public PubEstablishmentsNotAffiliated registerEstablishmentNotAffiliated(
+	public @ResponseBody PubEstablishmentsNotAffiliated registerEstablishmentNotAffiliated(
 			@RequestBody PubEstablishmentsNotAffiliatedRequest pubEstablishmentNotAffiliatedRequest) {
 		return pubEstablishmentsNotAffiliatedService.save(pubEstablishmentNotAffiliatedRequest);
 	}
