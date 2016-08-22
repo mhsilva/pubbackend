@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pub.api.mongo.entity.PubEstablishment;
-import com.pub.api.mongo.entity.PubEstablishmentsNotAffiliated;
-import com.pub.api.request.PubEstablishmentsNotAffiliatedRequest;
 import com.pub.api.response.PubEstablishmentStatus;
 import com.pub.api.service.PubEstablishmentService;
-import com.pub.api.service.PubEstablishmentsNotAffiliatedService;
 
 @RestController
 @RequestMapping(value = "/establishment")
@@ -24,9 +21,6 @@ public class PubEstablishmentController {
 
 	@Autowired
 	private PubEstablishmentService pubEstablishmentService;
-
-	@Autowired
-	private PubEstablishmentsNotAffiliatedService pubEstablishmentsNotAffiliatedService;
 
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET)
@@ -61,11 +55,5 @@ public class PubEstablishmentController {
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody PubEstablishment saveEstablishment(@RequestBody PubEstablishment establishment) {
 		return pubEstablishmentService.save(establishment);
-	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody PubEstablishmentsNotAffiliated registerEstablishmentNotAffiliated(
-			@RequestBody PubEstablishmentsNotAffiliatedRequest pubEstablishmentNotAffiliatedRequest) {
-		return pubEstablishmentsNotAffiliatedService.save(pubEstablishmentNotAffiliatedRequest);
 	}
 }
