@@ -23,6 +23,8 @@ public class PubEstablishment {
 
 	private List<PubTableQueue> tableQueue;
 
+	private List<PubEstablishmentTables> tables;
+
 	public String getId() {
 		return id;
 	}
@@ -61,6 +63,14 @@ public class PubEstablishment {
 
 	public void setTableQueue(List<PubTableQueue> tableQueue) {
 		this.tableQueue = tableQueue;
+	}
+
+	public List<PubEstablishmentTables> getTables() {
+		return tables;
+	}
+
+	public void setTables(List<PubEstablishmentTables> tables) {
+		this.tables = tables;
 	}
 
 	public void addCall(PubTableQueue pubTableQueue) {
