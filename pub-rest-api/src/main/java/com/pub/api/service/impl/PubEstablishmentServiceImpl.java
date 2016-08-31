@@ -60,9 +60,9 @@ public class PubEstablishmentServiceImpl implements PubEstablishmentService {
 			pubEstablishmentStatus.setLocationId(locationId);
 			pubEstablishmentStatus.setRegistered(!PubObjectUtil.isEmpty(pubEstablishment));
 			//pubEstablishmentStatus.setTables(PubObjectUtil.listIfNull(pubEstablishment.getTables()));
-			if(pubEstablishment.getTables()!=null){
+			/*if(pubEstablishment.getTables()!=null){
 				pubEstablishmentStatus.setTables(pubEstablishment.getTables());
-			}
+			}*/
 			
 			pubEstablishmentStatusCollection.add(pubEstablishmentStatus);
 		}
